@@ -10,7 +10,13 @@ import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [AppComponent, DataGridComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, MatTableModule, MatPaginatorModule, MatSortModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
