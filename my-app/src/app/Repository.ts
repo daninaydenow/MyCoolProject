@@ -2,6 +2,6 @@ export interface Repository {
   name: string;
   description: string;
   language: string;
-  stargazers: number;
-  url: string;
+  stargazers_count: number;
+  html_url: string;
 }
