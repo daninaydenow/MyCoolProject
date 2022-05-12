@@ -6,7 +6,7 @@ import { DataGridItem } from '../components/data-grid/data-grid-datasource';
 @Injectable({
   providedIn: 'root',
 })
-export class RepoServiceService {
+export class RepoService {
   private url: string = 'https://api.github.com/orgs/bosch-io/repos';
   constructor(private http: HttpClient) {}
 
