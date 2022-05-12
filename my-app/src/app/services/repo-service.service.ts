@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RepoServiceService {
+  private url: string = 'https://api.github.com/orgs/bosch-io/repos';
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getRepos(): Observable<any> {
+    return this.http.get<any>(this.url);
+  }
 }
