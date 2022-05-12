@@ -102,8 +102,6 @@ export class DataGridDataSource extends DataSource<DataGridItem> {
       switch (this.sort?.active) {
         case 'repoName':
           return compare(a.repoName, b.repoName, isAsc);
-        case 'description':
-          return compare(a.description, b.description, isAsc);
         case 'programLanguage':
           return compare(a.programLanguage, b.programLanguage, isAsc);
         case 'stargazers':
