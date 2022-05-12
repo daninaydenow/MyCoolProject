@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { RepoService } from 'src/app/services/repo-service.service';
 
 // TODO: Replace this with your own data model type
 export interface DataGridItem {
@@ -31,12 +32,16 @@ const EXAMPLE_DATA: DataGridItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class DataGridDataSource extends DataSource<DataGridItem> {
-  data: DataGridItem[] = EXAMPLE_DATA;
+  data: DataGridItem[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor() {
+  constructor(private repoService: RepoService) {
     super();
+  }
+
+  getRepos(): void {
+    this.repoService.getRepos().subscribe((result) => (this.data = result.map((x) => {"repoName": x.name, re }));
   }
 
   /**
@@ -92,17 +97,21 @@ export class DataGridDataSource extends DataSource<DataGridItem> {
       return data;
     }
 
-    // return data.sort((a, b) => {
-    //   const isAsc = this.sort?.direction === 'asc';
-    //   switch (this.sort?.active) {
-    //     case 'name':
-    //       return compare(a.name, b.name, isAsc);
-    //     case 'id':
-    //       return compare(+a.id, +b.id, isAsc);
-    //     default:
-    //       return 0;
-    //   }
-    // });
+    return data.sort((a, b) => {
+      const isAsc = this.sort?.direction === 'asc';
+      switch (this.sort?.active) {
+        case 'repoName':
+          return compare(a.repoName, b.repoName, isAsc);
+        case 'description':
+          return compare(a.description, b.description, isAsc);
+        case 'programLanguage':
+          return compare(a.programLanguage, b.programLanguage, isAsc);
+        case 'stargazers':
+          return compare(+a.stargazers, +b.stargazers, isAsc);
+        default:
+          return 0;
+      }
+    });
 
     return data;
   }
