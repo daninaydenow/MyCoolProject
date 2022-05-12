@@ -8,6 +8,7 @@ import { Repository } from '../Repository';
 })
 export class RepoService {
   private url: string = 'https://api.github.com/orgs/bosch-io/repos';
+
   constructor(private http: HttpClient) {}
 
   // Fetch all repositories from the api
