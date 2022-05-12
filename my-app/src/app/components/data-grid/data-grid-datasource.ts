@@ -6,32 +6,23 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface DataGridItem {
-  name: string;
-  id: number;
+  repoName: string;
+  description: string;
+  programLanguage: string;
+  stargazers: number;
+  repoUrl: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataGridItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {
+    repoName: 'oss-review-toolkit',
+    description:
+      'A suite of tools to assist with reviewing Open Source Software dependencies.',
+    programLanguage: 'Kotlin',
+    stargazers: 6,
+    repoUrl: 'https://github.com/bosch-io/oss-review-toolkit',
+  },
 ];
 
 /**
@@ -57,12 +48,19 @@ export class DataGridDataSource extends DataSource<DataGridItem> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
-        .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
-        }));
+      return merge(
+        observableOf(this.data),
+        this.paginator.page,
+        this.sort.sortChange
+      ).pipe(
+        map(() => {
+          return this.getPagedData(this.getSortedData([...this.data]));
+        })
+      );
     } else {
-      throw Error('Please set the paginator and sort on the data source before connecting.');
+      throw Error(
+        'Please set the paginator and sort on the data source before connecting.'
+      );
     }
   }
 
@@ -94,18 +92,27 @@ export class DataGridDataSource extends DataSource<DataGridItem> {
       return data;
     }
 
-    return data.sort((a, b) => {
-      const isAsc = this.sort?.direction === 'asc';
-      switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
-      }
-    });
+    // return data.sort((a, b) => {
+    //   const isAsc = this.sort?.direction === 'asc';
+    //   switch (this.sort?.active) {
+    //     case 'name':
+    //       return compare(a.name, b.name, isAsc);
+    //     case 'id':
+    //       return compare(+a.id, +b.id, isAsc);
+    //     default:
+    //       return 0;
+    //   }
+    // });
+
+    return data;
   }
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(
+  a: string | number,
+  b: string | number,
+  isAsc: boolean
+): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
