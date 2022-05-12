@@ -23,13 +23,13 @@
   <!-- Stargazers Column -->
   <ng-container matColumnDef="stargazers">
     <th mat-header-cell *matHeaderCellDef>Stargazers</th>
-    <td mat-cell *matCellDef="let element">{{ element.stargazers }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.stargazers_count }}</td>
   </ng-container>
 
   <!-- URL Column -->
   <ng-container matColumnDef="url">
     <th mat-header-cell *matHeaderCellDef>Url</th>
-    <td mat-cell *matCellDef="let element">{{ element.url }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.html_url }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
