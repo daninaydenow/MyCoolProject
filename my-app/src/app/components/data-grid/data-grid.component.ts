@@ -16,7 +16,13 @@ export class DataGridComponent implements AfterViewInit {
   dataSource: DataGridDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = [
+    'repoName',
+    'description',
+    'programLanguage',
+    'stargazers',
+    'repoUrl',
+  ];
 
   constructor() {
     this.dataSource = new DataGridDataSource();
