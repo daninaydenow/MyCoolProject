@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RepoServiceService } from './repo-service.service';
+import { RepoService } from './repo-service.service';
 
-describe('RepoServiceService', () => {
-  let service: RepoServiceService;
+describe('RepoService', () => {
+  let service: RepoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RepoServiceService);
+    service = TestBed.inject(RepoService);
   });
 
   it('should be created', () => {
