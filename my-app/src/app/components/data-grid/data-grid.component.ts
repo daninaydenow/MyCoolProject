@@ -7,7 +7,7 @@ import { DataGridDataSource, DataGridItem } from './data-grid-datasource';
 @Component({
   selector: 'app-data-grid',
   templateUrl: './data-grid.component.html',
-  styleUrls: ['./data-grid.component.css']
+  styleUrls: ['./data-grid.component.css'],
 })
 export class DataGridComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
