@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Repository } from 'src/app/Repository';
+import { RepoService } from 'src/app/services/repo-service.service';
 
 @Component({
   selector: 'app-data-grid',
@@ -6,15 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-grid.component.css'],
 })
 export class DataGridComponent implements OnInit {
-  dataSource = [
-    {
-      name: 'asdasd',
-      description: 'asdasd',
-      language: 'asdasda',
-      stargazers: 3,
-      url: 'asdasd',
-    },
-  ];
+  dataSource: Repository[] = [];
 
   // Table columns
   displayedColumns: string[] = [
@@ -24,7 +18,13 @@ export class DataGridComponent implements OnInit {
     'stargazers',
     'url',
   ];
-  constructor() {}
+  constructor(private repoService: RepoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRepos();
+  }
+
+  getRepos(): void {
+    this.repoService.getRepos().subscribe((repos) => (this.dataSource = repos));
+  }
 }
