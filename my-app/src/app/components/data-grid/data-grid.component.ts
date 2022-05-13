@@ -18,8 +18,8 @@ export class DataGridComponent implements OnInit {
     'name',
     'description',
     'language',
-    'stargazers',
-    'url',
+    'stargazers_count',
+    'html_url',
   ];
   constructor(private repoService: RepoService) {}
 

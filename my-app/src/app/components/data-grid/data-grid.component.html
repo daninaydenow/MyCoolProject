@@ -36,13 +36,13 @@
   </ng-container>
 
   <!-- Stargazers Column -->
-  <ng-container matColumnDef="stargazers">
+  <ng-container matColumnDef="stargazers_count">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Stargazers</th>
     <td mat-cell *matCellDef="let element">{{ element.stargazers_count }}</td>
   </ng-container>
 
   <!-- URL Column -->
-  <ng-container matColumnDef="url">
+  <ng-container matColumnDef="html_url">
     <th mat-header-cell *matHeaderCellDef>Repository Url</th>
     <td mat-cell *matCellDef="let element">{{ element.html_url }}</td>
   </ng-container>
