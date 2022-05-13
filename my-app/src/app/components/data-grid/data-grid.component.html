@@ -53,15 +53,15 @@
 
   <!-- Loading  -->
   <ng-container matColumnDef="loading">
-    <mat-footer-cell
-      *matFooterCellDef
-      colspan="6"
-      [ngClass]="{ hide: dataSource != null }"
+    <mat-footer-cell *matFooterCellDef colspan="6"
       >Loading Data</mat-footer-cell
     >
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  <mat-footer-row *matFooterRowDef="['loading']"></mat-footer-row>
+  <mat-footer-row
+    *matFooterRowDef="['loading']"
+    [ngClass]="{ hide: dataSource != null }"
+  ></mat-footer-row>
 </table>
