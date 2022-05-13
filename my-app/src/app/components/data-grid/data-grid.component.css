@@ -1,5 +1,9 @@
-.table,
-.filter {
+.table {
   width: 95%;
   margin: 20px auto;
+}
+
+.filter {
+  margin-inline: 39px;
+  width: 30%;
 }
