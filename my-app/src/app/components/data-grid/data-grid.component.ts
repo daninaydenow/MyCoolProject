@@ -31,10 +31,11 @@ export class DataGridComponent implements OnInit {
   // Process the response and assign repos to dataSource
   getRepos(): void {
     this.repoService.getRepos().subscribe((repos) => {
+      console.log(repos);
       // map incoming data to expected data interface
       let array = repos.map((item) => {
         return {
-          name: item.name,
+          name: item.name.toUpperCase(),
           description: item.description,
           language: item.language,
           stargazers_count: item.stargazers_count,
