@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Repository } from 'src/app/Repository';
 import { RepoService } from 'src/app/services/repo-service.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-data-grid',
@@ -10,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class DataGridComponent implements OnInit {
   dataSource!: MatTableDataSource<Repository>;
+  @ViewChild(MatSort) sort!: MatSort;
 
   // Table columns header cell names
   displayedColumns: string[] = [
@@ -28,9 +30,19 @@ export class DataGridComponent implements OnInit {
 
   // Process the response and assign repos to dataSource
   getRepos(): void {
-    this.repoService
-      .getRepos()
-      .subscribe((repos) => (this.dataSource = new MatTableDataSource(repos)));
+    this.repoService.getRepos().subscribe((repos) => {
+      let array = repos.map((item) => {
+        return {
+          name: item.name,
+          description: item.description,
+          language: item.language,
+          stargazers_count: item.stargazers_count,
+          html_url: item.html_url,
+        };
+      });
+      console.log(array);
+      this.dataSource = new MatTableDataSource(array);
+    });
   }
 
   applyFilter(event: Event) {
