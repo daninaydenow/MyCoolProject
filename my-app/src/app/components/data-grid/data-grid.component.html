@@ -1,9 +1,23 @@
-<mat-form-field appearance="standard">
+<mat-form-field appearance="standard" class="filter">
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input />
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Ex. hawkbit"
+    #input
+  />
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+  <mat-form-field appearance="standard" class="filter">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
