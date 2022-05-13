@@ -7,3 +7,11 @@
   margin-inline: 39px;
   width: 30%;
 }
+
+.hide {
+  display: none;
+}
+
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+}
