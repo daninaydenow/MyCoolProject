@@ -31,6 +31,7 @@ export class DataGridComponent implements OnInit {
   // Process the response and assign repos to dataSource
   getRepos(): void {
     this.repoService.getRepos().subscribe((repos) => {
+      // map incoming data to expected data interface
       let array = repos.map((item) => {
         return {
           name: item.name,
@@ -40,11 +41,12 @@ export class DataGridComponent implements OnInit {
           html_url: item.html_url,
         };
       });
-      console.log(array);
       this.dataSource = new MatTableDataSource(array);
+      this.dataSource.sort = this.sort;
     });
   }
 
+  // Filtering method
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
