@@ -31,7 +31,6 @@ export class DataGridComponent implements OnInit {
   // Process the response and assign repos to dataSource
   getRepos(): void {
     this.repoService.getRepos().subscribe((repos) => {
-      console.log(repos);
       // Map repo name to lower case for correct client-side sorting
       let array = repos.map((item) => {
         return {
