@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Repository } from 'src/app/Repository';
-import { RepoService } from 'src/app/services/repo-service.service';
+import { RepoService } from 'src/app/services/repo.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
