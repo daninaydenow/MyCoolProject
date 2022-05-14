@@ -32,10 +32,10 @@ export class DataGridComponent implements OnInit {
   getRepos(): void {
     this.repoService.getRepos().subscribe((repos) => {
       console.log(repos);
-      // map incoming data to expected data interface
+      // Map repo name to lower case for correct client-side sorting
       let array = repos.map((item) => {
         return {
-          name: item.name.toUpperCase(),
+          name: item.name.toLocaleLowerCase(),
           description: item.description,
           language: item.language,
           stargazers_count: item.stargazers_count,
