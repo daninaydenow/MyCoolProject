@@ -121,7 +121,7 @@ describe('RepoService', () => {
       const requests = httpTestingController.match(reposUrl);
       expect(requests.length).withContext('calls to getRepos()').toEqual(3);
 
-      // Respond to each request with different mock hero results
+      // Respond to each request with different mock repo results
       requests[0].flush([]);
       requests[1].flush([
         {
