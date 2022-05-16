@@ -41,7 +41,7 @@ export class DataGridComponent implements OnInit {
           html_url: item.html_url,
         };
       });
-      console.log(array);
+
       this.dataSource = new MatTableDataSource(array);
       this.dataSource.sort = this.sort;
     });
