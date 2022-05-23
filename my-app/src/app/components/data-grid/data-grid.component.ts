@@ -34,7 +34,7 @@ export class DataGridComponent implements OnInit {
       // Map repo name to lower case for correct client-side sorting
       let array = repos.map((item) => {
         return {
-          name: item.name.toLocaleLowerCase(),
+          name: item.name.toLowerCase(),
           description: item.description,
           language: item.language,
           stargazers_count: item.stargazers_count,
